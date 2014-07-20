@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="ticTacToe">
+<head>
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+    <link rel="stylesheet" href="ttt.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="ttt.js"></script>
+</head>
+  <body ng-controller="tictacController">
+    <div class="board" ng-repeat="rows in board">
+      <div ng-class="{ tile: true, selected: tile.active }" ng-repeat="tile in rows" ng-click="tileMark(tile)">
+          <div class="mark">
+            {{ tile.x }}, {{ tile.y }}
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
