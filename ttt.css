@@ -1,5 +1,4 @@
 .board {
-	margin: 0 auto;
 }
 
 .tile {
@@ -9,10 +8,18 @@
 	display: inline-block;
 }
 
-.selected {
+.p1 {
 	height: 100px;
 	width: 100px;
 	border: 1px solid black;
 	background-color: blue;
+	display: inline-block;
 }
 
+.p2 {
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+	background-color: green;
+	display: inline-block;
+}

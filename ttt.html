@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html ng-app="ticTacToe">
 <head>
-	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
     <link rel="stylesheet" href="ttt.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
     <script src="ttt.js"></script>
 </head>
   <body ng-controller="tictacController">
-    <div class="board" ng-repeat="rows in board">
-      <div ng-class="{ tile: true, selected: tile.active }" ng-repeat="tile in rows" ng-click="tileMark(tile)">
+  <div class="board" ng-repeat="rows in board">
+
+     <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{ tile: true, p1: tile.playerOneOwns, p2: tile.playerTwoOwns}" ng-repeat="tile in rows" ng-click="tileMark(tile) ; clickingBox(whichArray(tile), tile.x, tile.y)">
+          
           <div class="mark">
-            {{ tile.x }}, {{ tile.y }}
+            x{{ tile.x }}, y{{ tile.y }}
           </div>
+        
+        </div>
+
       </div>
-    </div>
+
+
   </body>
 </html>
