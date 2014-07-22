@@ -4,12 +4,17 @@ var e = window.prompt("What size board would you like? Must be at least 6x6");
 
 var wc = Math.floor(e - 2);
 
+// var tie = 
+
 // var levelChoice = window.prompt("What level would you like to play? Easy, Medium, or Hard");
 
 // var blockCell
 
 
 ticTacToe.controller('tictacController', function ($scope) {
+
+// pOneCombos plugs clicked tiles into an array
+// pTwoCombos plugs clicked tiles into an array
 
   $scope.pOneCombos = [];
   $scope.pTwoCombos = [];
@@ -28,15 +33,10 @@ ticTacToe.controller('tictacController', function ($scope) {
   };
 
   $scope.boardInit = function(e) {
-
-    $scope.board = [];
-    
-    for (var i = 0 ; i < e; i++) {
-      
+    $scope.board = [];   
+    for (var i = 0 ; i < e; i++) {     
       var row = [];
-      
-      for (var j = 0; j < e; j++) {
-        
+      for (var j = 0; j < e; j++) {       
         row.push(
           {
             x: (j + 1),
@@ -45,23 +45,24 @@ ticTacToe.controller('tictacController', function ($scope) {
             active: false,
             playerOneOwns: false,
             playerTwoOwns: false,
-          }
-        );
-      }
-      
+            block: false
+          });
+      }  
       $scope.board.push(row);
     }
+    blockOne();
   };
 
-//   var blockOne = function() {
-
-//   }
-
-// $scope.blockOne = 
-
+  var blockOne = function() {
+    var i = Math.floor(Math.random() * e);
+    var j = Math.floor(Math.random() * e);
+    $scope.board[i][j].block = true;
+    console.log($scope.board[i][j].block);
+  };
 
 
   $scope.boardInit(e);
+  
 
   $scope.tileMark = function(tile) {
 
@@ -269,6 +270,7 @@ $scope.clickingBox = function(array, x, y) {
   $scope.counterTwoZeroSix = 1;
   $scope.counterSevenZeroThree = 1;
   $scope.counterEightZeroFour = 1;
+  // $scope.
 
 };
 
@@ -293,6 +295,7 @@ $scope.checkForWin = function() {
   } else if ($scope.counterEightZeroFour == $scope.wc && $scope.isOdd($scope.counterbaby) == true) { 
     alert("Player Two Wins!");
   } 
+    // else if ()
 };
 
 

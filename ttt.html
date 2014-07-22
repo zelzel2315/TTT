@@ -7,8 +7,9 @@
   <script src="ttt.js"></script>
 </head>
   <body ng-controller="tictacController">
+    <h1>Tic Tac Toe</h1>
   <div class="board" ng-repeat="rows in board">
-     <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{ tile: true, p1: tile.playerOneOwns, p2: tile.playerTwoOwns}" ng-repeat="tile in rows" ng-click="tileMark(tile) ; clickingBox(whichArray(tile), tile.x, tile.y)">
+     <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{tile: !tile.block, p1: tile.playerOneOwns, p2: tile.playerTwoOwns, block: tile.block}" ng-repeat="tile in rows" ng-click="tileMark(tile) ; clickingBox(whichArray(tile), tile.x, tile.y)">
         <div class="mark">
             x{{ tile.x }}, y{{ tile.y }}
         </div>
