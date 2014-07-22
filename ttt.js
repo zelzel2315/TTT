@@ -1,5 +1,14 @@
 var ticTacToe = angular.module('ticTacToe', []);
 
+var e = window.prompt("What size board would you like? Must be at least 6x6");
+
+var wc = Math.floor(e - 2);
+
+// var levelChoice = window.prompt("What level would you like to play? Easy, Medium, or Hard");
+
+// var blockCell
+
+
 ticTacToe.controller('tictacController', function ($scope) {
 
   $scope.pOneCombos = [];
@@ -44,15 +53,15 @@ ticTacToe.controller('tictacController', function ($scope) {
     }
   };
 
-  var blockOne = function() {
-  $scope.
-}
+//   var blockOne = function() {
 
-$scope.blockOne = 
+//   }
+
+// $scope.blockOne = 
 
 
 
-  $scope.boardInit(7);
+  $scope.boardInit(e);
 
   $scope.tileMark = function(tile) {
 
@@ -245,7 +254,7 @@ $scope.forLooper8 = function(array, x, y) {
 
 // these timers needed to be set to 1 to include piece clicked on. -Brant
 
-$scope.wc = 4; //win case 
+$scope.wc = Math.floor(e - 2); //win case 
 $scope.counterOneZeroFive = 1;
 $scope.counterTwoZeroSix = 1;
 $scope.counterSevenZeroThree = 1;
