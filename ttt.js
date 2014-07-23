@@ -58,10 +58,10 @@ ticTacToe.controller('tictacController', function ($scope) {
     var j = Math.floor(Math.random() * e);
     $scope.board[i][j].block = true;
     console.log($scope.board[i][j].block);
+    $scope.board[i][j].active = true;
   };
 
-
-  $scope.boardInit(e);
+ $scope.boardInit(e);
   
 
   $scope.tileMark = function(tile) {
@@ -270,7 +270,6 @@ $scope.clickingBox = function(array, x, y) {
   $scope.counterTwoZeroSix = 1;
   $scope.counterSevenZeroThree = 1;
   $scope.counterEightZeroFour = 1;
-  // $scope.
 
 };
 
@@ -295,7 +294,9 @@ $scope.checkForWin = function() {
   } else if ($scope.counterEightZeroFour == $scope.wc && $scope.isOdd($scope.counterbaby) == true) { 
     alert("Player Two Wins!");
   } 
-    // else if ()
+  // else if ($scope.counterbaby == (3*3) + 1) {
+  //   alert("Tie!");
+  // }
 };
 
 
