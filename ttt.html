@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="ticTacToe">
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+   <!-- <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+   <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script> -->
+  <script src="ttt.js"></script>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <link rel="stylesheet" href="ttt.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-  <script src="ttt.js"></script>
 </head>
   <body ng-controller="tictacController">
     <h1>Tic Tac Toe</h1>
   <div class="board" ng-repeat="rows in board">
-     <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{tile: !tile.block, p1: tile.playerOneOwns, p2: tile.playerTwoOwns, block: tile.block}" ng-repeat="tile in rows" ng-click="tileMark(tile); tile.active || clickingBox(whichArray(tile), tile.x, tile.y)">
+     <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{tile: !tile.block, p1: tile.playerOneOwns, p2: tile.playerTwoOwns, block: tile.block}" ng-repeat="tile in rows" ng-click="tileMark(tile); clickingBox(whichArray(tile), tile.x, tile.y)">
         <div class="mark">
             x{{ tile.x }}, y{{ tile.y }}
         </div>

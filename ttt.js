@@ -21,7 +21,7 @@ ticTacToe.controller('tictacController', function ($scope) {
 
   $scope.pOneCombos = [];
   $scope.pTwoCombos = [];
-  $scope.blockedCell = [];
+  // $scope.blockedCell = [];
   $scope.counterbaby = 1;
 
   $scope.isOdd = function(value) {
@@ -33,8 +33,8 @@ ticTacToe.controller('tictacController', function ($scope) {
       return $scope.pOneCombos;
     } else if (tile.playerTwoOwns == true) {
       return $scope.pTwoCombos;
-    } else if (tile.block == true) {
-      return $scope.blockedCell;
+    // } else if (tile.block == true) {
+    //   return $scope.blockedCell;
     }
   };
 
@@ -71,10 +71,10 @@ ticTacToe.controller('tictacController', function ($scope) {
 
   $scope.tileMark = function(tile) {
     console.log("Shit's working");
-    if (tile.active == false && tile.block == false) {
+    if (tile.active == false) {
       if ($scope.isOdd($scope.counterbaby)) {
           tile.active = true;
-          tile.block = false;
+          // tile.block = false;
           tile.playerOneOwns = true;
           tile.mark = 'X';
           $scope.pOneCombos.push([tile.x,tile.y]);
@@ -82,17 +82,24 @@ ticTacToe.controller('tictacController', function ($scope) {
           $scope.counterbaby++;
       } else {
           tile.active = true;
-          tile.block = false;
+          // tile.block = false;
           tile.playerTwoOwns = true;
           tile.mark = 'X';
           $scope.pTwoCombos.push([tile.x,tile.y]);
           console.log($scope.pTwoCombos);
           $scope.counterbaby++;
-      } else {
+      }
+    } else {
       alert('Don\'t do it, Bro');
-    }   
-    } 
-    // if (tile.block == true)
+    // }    
+    // if (tile.block == true) {
+    //   console.log("Cells are blocking")
+    //       tile.blockedCell = true;
+    //       tile.mark = 'X';
+    //       $scope.blockedCell.push([tile.x,tile.y]);
+    //       console.log($scope.blockedCell);
+    //       $scope.counterbaby++;
+     }
   };
 
 $scope.checkForWin = function(x,y) {
