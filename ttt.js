@@ -4,6 +4,9 @@ var e = window.prompt("What size board would you like? Must be at least 6x6");
 
 var wc = Math.floor(e - 2);
 
+// var easy = window.prompt("What level would you like to play? Easy, Medium, or Hard?")
+//   function(blockOne);
+
 // var tie = 
 
 // var levelChoice = window.prompt("What level would you like to play? Easy, Medium, or Hard");
@@ -18,6 +21,7 @@ ticTacToe.controller('tictacController', function ($scope) {
 
   $scope.pOneCombos = [];
   $scope.pTwoCombos = [];
+  $scope.blockedCell = [];
   $scope.counterbaby = 1;
 
   $scope.isOdd = function(value) {
@@ -29,6 +33,8 @@ ticTacToe.controller('tictacController', function ($scope) {
       return $scope.pOneCombos;
     } else if (tile.playerTwoOwns == true) {
       return $scope.pTwoCombos;
+    } else if (tile.block == true) {
+      return $scope.blockedCell;
     }
   };
 
@@ -57,18 +63,18 @@ ticTacToe.controller('tictacController', function ($scope) {
     var i = Math.floor(Math.random() * e);
     var j = Math.floor(Math.random() * e);
     $scope.board[i][j].block = true;
+    $scope.board[i][j].active = true; 
     console.log($scope.board[i][j].block);
-    $scope.board[i][j].active = true;
   };
 
  $scope.boardInit(e);
-  
 
   $scope.tileMark = function(tile) {
-
-    if (tile.active == false) {
+    console.log("Shit's working");
+    if (tile.active == false && tile.block == false) {
       if ($scope.isOdd($scope.counterbaby)) {
           tile.active = true;
+          tile.block = false;
           tile.playerOneOwns = true;
           tile.mark = 'X';
           $scope.pOneCombos.push([tile.x,tile.y]);
@@ -76,23 +82,23 @@ ticTacToe.controller('tictacController', function ($scope) {
           $scope.counterbaby++;
       } else {
           tile.active = true;
+          tile.block = false;
           tile.playerTwoOwns = true;
           tile.mark = 'X';
           $scope.pTwoCombos.push([tile.x,tile.y]);
           console.log($scope.pTwoCombos);
           $scope.counterbaby++;
-      }
-    } else {
+      } else {
       alert('Don\'t do it, Bro');
-    }    
+    }   
+    } 
+    // if (tile.block == true)
   };
 
 $scope.checkForWin = function(x,y) {
   console.log("Testing to see " + x + " and " + y);
 
 };
-
-
 
 $scope.directionOne = function(array, x, y) {
   $scope.forLooper1(array, x, y);
