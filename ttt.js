@@ -21,7 +21,7 @@ ticTacToe.controller('tictacController', function ($scope) {
 
   $scope.pOneCombos = [];
   $scope.pTwoCombos = [];
-  // $scope.blockedCell = [];
+  $scope.blockedCell = [];
   $scope.counterbaby = 1;
 
   $scope.isOdd = function(value) {
@@ -33,10 +33,19 @@ ticTacToe.controller('tictacController', function ($scope) {
       return $scope.pOneCombos;
     } else if (tile.playerTwoOwns == true) {
       return $scope.pTwoCombos;
-    // } else if (tile.block == true) {
-    //   return $scope.blockedCell;
+    } else {
+      return $scope.blockedCell;
     }
   };
+
+  $scope.blockOne = function() {
+    var i = Math.floor(Math.random() * e);
+    var j = Math.floor(Math.random() * e);
+    $scope.board[i][j].block = true;
+    $scope.board[i][j].active = true; 
+    console.log($scope.board[i][j].block);
+  };
+
 
   $scope.boardInit = function(e) {
     $scope.board = [];   
@@ -56,21 +65,13 @@ ticTacToe.controller('tictacController', function ($scope) {
       }  
       $scope.board.push(row);
     }
-    blockOne();
-  };
-
-  var blockOne = function() {
-    var i = Math.floor(Math.random() * e);
-    var j = Math.floor(Math.random() * e);
-    $scope.board[i][j].block = true;
-    $scope.board[i][j].active = true; 
-    console.log($scope.board[i][j].block);
+    $scope.blockOne();
   };
 
  $scope.boardInit(e);
 
   $scope.tileMark = function(tile) {
-    console.log("Shit's working");
+    console.log(tile.active);
     if (tile.active == false) {
       if ($scope.isOdd($scope.counterbaby)) {
           tile.active = true;
@@ -113,6 +114,7 @@ $scope.directionOne = function(array, x, y) {
 };
 
 $scope.forLooper1 = function(array, x, y) {
+    console.log(array);
     for (i = 0; i < array.length; i++) {
       if (array[i][0] == x - 1 && array[i][1] == y - 1) {
         $scope.counterOneZeroFive++;
