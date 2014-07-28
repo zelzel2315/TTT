@@ -2,7 +2,7 @@ var ticTacToe = angular.module('ticTacToe', []);
 
 var e = prompt("What size board would you like? Must be at least 6x6");
 
-var levelChoice = prompt("What level would you like to play? Enter '1' for Easy, '2' for Medium, '3' for Hard");
+// var levelChoice = prompt("What level would you like to play? Enter '1' for Easy, '2' for Medium, '3' for Hard");
 
 var wc = Math.floor(e - 2);
 
@@ -30,14 +30,14 @@ ticTacToe.controller('tictacController', function ($scope) {
     }
   };
 
-  $scope.blockCell = function(levelChoice) {
-    for (i = 0; i < 3; i++) {
+  $scope.blockCell = function() {
+    
     var i = Math.floor(Math.random() * e);
     var j = Math.floor(Math.random() * e);
     $scope.board[i][j].block = true;
     $scope.board[i][j].active = true; 
     console.log($scope.board[i][j].block);
-  }
+  
   };
 
   $scope.boardInit = function(e) {
