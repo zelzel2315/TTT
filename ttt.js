@@ -1,18 +1,10 @@
 var ticTacToe = angular.module('ticTacToe', []);
 
-var e = window.prompt("What size board would you like? Must be at least 6x6");
+var e = prompt("What size board would you like? Must be at least 6x6");
+
+var levelChoice = prompt("What level would you like to play? Enter '1' for Easy, '2' for Medium, '3' for Hard");
 
 var wc = Math.floor(e - 2);
-
-// var easy = window.prompt("What level would you like to play? Easy, Medium, or Hard?")
-//   function(blockOne);
-
-// var tie = 
-
-// var levelChoice = window.prompt("What level would you like to play? Easy, Medium, or Hard");
-
-// var blockCell
-
 
 ticTacToe.controller('tictacController', function ($scope) {
 
@@ -38,14 +30,15 @@ ticTacToe.controller('tictacController', function ($scope) {
     }
   };
 
-  $scope.blockOne = function() {
+  $scope.blockCell = function(levelChoice) {
+    for (i = 0; i < 3; i++) {
     var i = Math.floor(Math.random() * e);
     var j = Math.floor(Math.random() * e);
     $scope.board[i][j].block = true;
     $scope.board[i][j].active = true; 
     console.log($scope.board[i][j].block);
+  }
   };
-
 
   $scope.boardInit = function(e) {
     $scope.board = [];   
@@ -65,10 +58,12 @@ ticTacToe.controller('tictacController', function ($scope) {
       }  
       $scope.board.push(row);
     }
-    $scope.blockOne();
+    $scope.blockCell();
   };
 
   $scope.boardInit(e);
+
+  var dontDoIt = new Audio('http://www.montypython.net/sounds/hg/noo.wav'); 
 
   $scope.tileMark = function(tile) {
     console.log(tile.active);
@@ -89,8 +84,9 @@ ticTacToe.controller('tictacController', function ($scope) {
         $scope.counterbaby++;
       }
     } else {
-      alert('Don\'t do it, Bro');
-    }
+      dontDoIt.play();
+      alert("Nooo!");
+    }  
   };
 
   $scope.checkForWin = function(x,y) {
@@ -144,18 +140,24 @@ ticTacToe.controller('tictacController', function ($scope) {
   $scope.directionarray = [1,1,1,1];
 
 };
-
-// $scope.testArray = [[2,4], [1,4]]; // [[2,3], [1,2], [3,3], [3,2], [4,3], [5,2]];
-
+  // player one
+  var KoNWins = new Audio('http://www.montypython.net/sounds/hg/knightni.wav'); 
+  // player two
+  var bkWins = new Audio('http://www.intriguing.com/mp/_sounds/hg/knight.wav');
+  // tie
+  var draw = new Audio('http://www.montypython.net/sounds/hg/itsadraw.wav');
 
   $scope.checkForWin = function(directionarray) {
   for (i = 0; i < directionarray.length; i++) {
     if (directionarray[i] == $scope.wc && $scope.isOdd($scope.counterbaby) == true) { 
-      alert("Player Two Wins!");
+      bkWins.play();
+      alert("The Black Knight Wins!");
     } else if (directionarray[i] == $scope.wc && $scope.isOdd($scope.counterbaby) == false) { 
-      alert("Player One Wins!");
-    } else if ($scope.counterbaby === (e * e) + 1) {
-      alert("It's a tie!")
+      KoNWins.play();
+      alert("The Knights Who Say 'Ni' Win!"); 
+    } else if ($scope.counterbaby === (e * e)) {
+      draw.play();
+      alert("It's a tie!");
     }
   }
 };

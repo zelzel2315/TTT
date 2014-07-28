@@ -2,20 +2,37 @@
 <html ng-app="ticTacToe">
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-   <!-- <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
-   <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script> -->
   <script src="ttt.js"></script>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <link rel="stylesheet" href="ttt.css">
 </head>
   <body ng-controller="tictacController">
-    <h1>Tic Tac Toe</h1>
-  <div class="board" ng-repeat="rows in board">
-     <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{tile: !tile.block, p1: tile.playerOneOwns, p2: tile.playerTwoOwns, block: tile.block}" ng-repeat="tile in rows" ng-click="tileMark(tile); clickingBox(whichArray(tile), tile.x, tile.y)">
-        <div class="mark">
-            x{{ tile.x }}, y{{ tile.y }}
+    <div class="shadow">
+      <h1>Tic Tac Toe</h1>
+        <div class="board" ng-repeat="rows in board">
+          <div id="{{ tile.x }}_{{ tile.y }}" ng-class="{tile: !tile.block, p1: tile.playerOneOwns, p2: tile.playerTwoOwns, block: tile.block}" ng-repeat="tile in rows" ng-click="tileMark(tile); clickingBox(whichArray(tile), tile.x, tile.y)">
+          </div>
+            <div class="mark">
+            <!-- x{{ tile.x }}, y{{ tile.y }} -->
+            </div>
         </div>
-      </div>
     </div>
   </body>
 </html>
+
+   <!--  <div>
+      <form action="">
+        <select class="menu">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </form>
+    </div> -->
+   <!--  <audio id="sound1" src="http://www.montypython.net/sounds/hg/itsadraw.wav"></audio>
+  <audio id="sound2" src="http://www.montypython.net/sounds/hg/victory.wav"></audio>
+ 
+  <button onclick="document.getElementById('sound1').play()">Draw</button><!-- 
+ <!--  <button onclick="document.getElementById('sound2').play()">Win</button> , ng-click=playSound() --> 
+  
+

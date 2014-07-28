@@ -1,48 +1,62 @@
 body {
 	background-image: url('MP-bg.jpg');
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: right;
+	background-color: #0A5C98;
+
 }
+
+@font-face {
+	font-family: 'Aileron-Black';
+	src: url('aileron/Aileron-Black.otf'); 
+	}
 
 h1 {
 	font-size:40px;
-	text-align: center;
-	color: white;
-	font-family: helvetica;
+	color: #202C44;
+	font-family: 'Aileron-Black';
+	margin-left: 230px;
 }
 
 .board {
-	text-align: center;
+	margin-left: 100px;
+	margin-top: -5px;
 }
 
 .tile {
-	height: 100px;
-	width: 100px;
-	border: 5px solid brown;
+	height: 70px;
+	width: 70px;
+	border: 5px solid #92A1B8;
 	display: inline-block;
-	opacity: 0.7; 
+	background-color: #E3A95F;
+	/*opacity: 0.7; */
 }
 
 .p1 {
-	height: 100px;
-	width: 100px;
-	border: 5px solid brown;
-	background-color: black;
+	height: 70px;
+	width: 70px;
+	border: 5px solid #92A1B8;
+	background-image: url('knights_of_ni.jpg');
 	display: inline-block;
-}
+} 
 
 .p2 {
-	height: 100px;
-	width: 100px;
-	border: 5px solid brown;
-	background-color: white;
+	height: 70px;
+	width: 70px;
+	border: 5px solid #92A1B8;
+	background-image: url('black_knight.jpg');
 	display: inline-block;
 }
 
 .block {
-	background-color: red;
-	height: 100px;
-	width: 100px;
-	border: 5px solid brown;
+	background-color: #CE2B2C;
+	height: 70px;
+	width: 70px;
+	border: 5px solid #92A1B8;
 	display: inline-block;
 }
+
+/*.menu {
+	font-size:200px;
+	text-align: center;
+}*/
